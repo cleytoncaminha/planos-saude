@@ -73,10 +73,25 @@ export default function Home() {
               color: "#ffffff",
             }}
           >
-            <Typography variant="h2" component="h1" gutterBottom color="primary">
+            <Typography 
+              variant="h2" 
+              component="h1" 
+              gutterBottom 
+              color="primary"
+              sx={{
+                fontSize: { xs: "2rem", sm: "3rem", md: "4rem" } // Ajusta o tamanho da fonte conforme o tamanho da tela
+              }}
+            >
               Cuide da sua Saúde Agora!
             </Typography>
-            <Typography variant="h5" component="p" gutterBottom>
+            <Typography 
+              variant="h5" 
+              component="p" 
+              gutterBottom
+              sx={{
+                fontSize: { xs: "1.25rem", sm: "1.5rem", md: "2rem" } // Ajuste de fonte para o texto
+              }}
+            >
               Encontre o plano de saúde ideal para você e sua família, com preços acessíveis e cobertura completa.
             </Typography>
             <Button variant="contained" size="large" color="primary" sx={{ mt: 2 }}>
@@ -84,8 +99,8 @@ export default function Home() {
             </Button>
           </Box>
         </Box>
-        <Container maxWidth="md" sx={{ my: 8, p: 4, borderRadius: 2 }}>
-          <Typography variant="h4" component="h2" color="primary" gutterBottom textAlign="center">
+        <Container maxWidth="md" sx={{ my: 6, p: 4, borderRadius: 2 }}>
+          <Typography mb={7} variant="h4" component="h2" color="primary" gutterBottom textAlign="center">
             Benefícios dos nossos Planos
           </Typography>
           <Grid container spacing={4}>
