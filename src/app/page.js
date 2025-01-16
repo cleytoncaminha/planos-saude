@@ -107,6 +107,12 @@ export default function Home() {
                   fontSize: "1.2rem",
                   borderRadius: "30px"
                 }}
+                onClick={() => {
+                  window.open(
+                    "https://wa.me/558599077819?text=Quero%20mais%20informações%20sobre%20planos%20de%20saúde",
+                    "_blank"
+                  );
+                }}
               >
                 Fale com uma Consultora
               </Button> 
