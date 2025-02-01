@@ -6,8 +6,10 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { LocalHospital } from "@mui/icons-material";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import LocalConvenienceStoreIcon from '@mui/icons-material/LocalConvenienceStore';
+import HospitalsSection from "@/components/hospitals";
+import Image from 'next/image'
+import Carrossel from "@/components/formCarousel";
 
-// Definindo o tema com a cor principal
 const theme = createTheme({
   palette: {
     primary: {
@@ -19,6 +21,11 @@ const theme = createTheme({
 export default function Home() {
   const scrollToContact = () => {
     const contatoSection = document.getElementById("contato");
+    contatoSection.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToRede = () => {
+    const contatoSection = document.getElementById("rede");
     contatoSection.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -38,13 +45,22 @@ export default function Home() {
         backdropFilter: "blur(5px)",
       }}
       >
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Planos de Saúde
-          </Typography>
-          <Button color="inherit" onClick={scrollToContact}>
-            Contato
-          </Button>
+        <Toolbar sx={{display: "flex", justifyContent:"space-between"}}>
+          <Image 
+          src="/unimed-fortaleza.png"
+          width={150}
+          height={150}
+          alt="Picture of the author"
+          sx={{ flexGrow: 1 }}
+          />
+          <Box>
+            <Button color="inherit" onClick={scrollToContact}>
+              Contato
+            </Button>
+            <Button color="inherit" onClick={scrollToRede}>
+              Rede
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
 
@@ -54,7 +70,7 @@ export default function Home() {
               textAlign: "center",
               mb: 4,
               width: "100%",
-              height: "70vh",
+              height: {sm:"90vh", md:"70vh"},
               backgroundImage: 'url(/banner-medica.jpg)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -67,55 +83,15 @@ export default function Home() {
               textAlign: "center",
               mb: 4,
               width: "100%",
-              height: "70vh",
+              height: {sm:"90vh", md:"70vh"},
               backgroundColor: "rgba(13,74,20, 0.9)",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
-              p: 10,
               color: "#ffffff",
             }}
           >
-            <Typography 
-              variant="h2" 
-              component="h1" 
-              gutterBottom 
-              color="#3bee2b"
-              sx={{
-                fontSize: { xs: "2rem", sm: "3rem", md: "5rem" },
-                fontWeight: "bold"
-              }}
-            >
-              Cuide da sua Saúde Agora!
-            </Typography>
-            <Typography 
-              component="p"
-              gutterBottom
-              sx={{
-                fontSize: { xs: "1.25rem", sm: "1.3rem", md: "1.5rem" },
-              }}
-            >
-              Encontre o plano de saúde ideal para você e sua família, com preços acessíveis e cobertura completa.
-            </Typography>
-            <Button 
-                variant="contained" 
-                color="primary" 
-                sx={{ 
-                  mt: 2, 
-                  px: 4,
-                  py: 1.5,
-                  fontSize: "1.2rem",
-                  borderRadius: "30px"
-                }}
-                onClick={() => {
-                  window.open(
-                    "https://wa.me/558599077819?text=Quero%20mais%20informações%20sobre%20planos%20de%20saúde",
-                    "_blank"
-                  );
-                }}
-              >
-                Fale com uma Consultora
-              </Button> 
+            <Carrossel />
           </Box>
         </Box>
         <Container maxWidth="md" sx={{ my: 6, p: 4, borderRadius: 2 }}>
@@ -138,11 +114,11 @@ export default function Home() {
                   color: "#ffffff",
                   p: 3,
                   borderRadius: 2,
-                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.4)", // Adicionando sombra
-                  transition: "transform 0.2s, box-shadow 0.2s", // Suaviza a interação
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.4)",
+                  transition: "transform 0.2s, box-shadow 0.2s",
                   "&:hover": {
-                    transform: "scale(1.05)", // Pequeno efeito de "zoom" ao passar o mouse
-                    boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.6)", // Sombra mais forte ao hover
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.6)",
                   },
                 }}
               >
@@ -209,7 +185,79 @@ export default function Home() {
             </Grid>
           </Grid>
         </Container>
-        <Container maxWidth="sm"  id="contato" sx={{ mb: 8, backgroundColor: "#ffffff", p: 4, borderRadius: 2, boxShadow: 3 }}>
+        <Box
+          sx={{
+              textAlign: "center",
+              mb: 4,
+              width: "100%",
+              height: "50vh",
+              backgroundImage: 'url(/hands-promotion.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              color: "#ffffff",
+            }}
+          >
+        <Box
+          sx={{
+              textAlign: "center",
+              mb: 4,
+              width: "100%",
+              height: "50vh",
+              backgroundColor: "rgba(13,74,20, 0.7)",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              p: { xs: 5, sm: 10 },
+              color: "#ffffff",
+            }}
+          >
+            <Typography
+              variant="h5"
+              sx={{
+                fontSize: { xs: "2rem", sm: "1.5rem", md: "3rem" },
+                fontWeight: "bold",
+              }}
+            >
+              🎉 Promoção Exclusiva
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: "1rem", sm: "1rem", md: "1.5rem" },
+                mt: 1,
+              }}
+            >
+              Adquira seu plano de saúde multiplan hoje e aproveite condições especiais. 
+            </Typography>
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{
+                mt: 2,
+                px: 4,
+                py: 1.5,
+                fontSize: { xs: "0.9rem", sm: "1rem", md: "1.5rem" },
+                backgroundColor: "#ffffff",
+                color: "#1daa2d",
+                fontWeight: "bold",
+                borderRadius: "30px",
+                "&:hover": {
+                  backgroundColor: "#f0f0f0",
+                },
+              }}
+              onClick={() => {
+                window.open(
+                  "https://wa.me/558599077819?text=Quero%20aproveitar%20a%20promoção%20de%2010%%20de%20desconto%20nos%20planos%20de%20saúde",
+                  "_blank"
+                );
+              }}
+            >
+              Aproveitar Agora
+            </Button>
+          </Box>
+        </Box>
+        <HospitalsSection />
+        <Container maxWidth="sm"  id="contato" sx={{ my: 3, backgroundColor: "#ffffff", p: 4, borderRadius: 2, boxShadow: 3 }}>
           <Typography variant="h4" component="h2" color="primary" gutterBottom textAlign={"center"}>
             Entre em Contato
           </Typography>
